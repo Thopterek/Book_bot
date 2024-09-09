@@ -1,2 +1,2 @@
 # Book_bot
-I thought its nice
+BookBot is my first project!
