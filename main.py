@@ -2,10 +2,10 @@ def main():
     path = "books/frankenstein.txt"
     txt = book_txt(path)
     num = count_words(txt)
-    print(num)
     cc = count_char(txt)
-    print(cc)
-    
+    rep = reporting(cc)
+    print(f"it was {num} words!")
+
 def book_txt(path):
     with open(path) as f:
         return f.read()
@@ -23,5 +23,23 @@ def count_char(txt):
         else:
             cc[char] = 1
     return cc
+
+def hint(d):
+    return d["num"]
+
+def msg(ncc):
+    print("Your report is getting ready")
+    for letter in ncc:
+        print (f"Letter {letter['char']} was used {letter['num']} times")
+    print("Thank you for reading")
+
+def reporting(cc):
+    ncc = []
+    for letter in cc:
+        if letter.isalpha():
+            ncc.append({"char": letter, "num": cc[letter]})
+    ncc.sort(reverse=True, key=hint)
+    brr = msg(ncc)
+    return ncc
 
 main()
